@@ -116,22 +116,31 @@ body {
 .language-switcher {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 
-.lang-btn {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    padding: 0.5rem 1rem;
+.lang-flag {
+    background: transparent;
+    border: 2px solid transparent;
     border-radius: 5px;
+    padding: 0.4rem 0.6rem;
     cursor: pointer;
-    font-weight: 600;
+    font-size: 1.8rem;
     transition: var(--transition);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.lang-btn:hover {
-    background: var(--accent-gold);
-    transform: translateY(-2px);
+.lang-flag:hover {
+    transform: scale(1.15);
+    border-color: var(--primary-color);
+}
+
+.lang-flag.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .menu-toggle {
@@ -161,7 +170,7 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.9)),
-                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop') center/cover;
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920&q=80') center/cover;
     text-align: center;
     color: var(--text-light);
     margin-top: 80px;

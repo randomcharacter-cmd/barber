@@ -129,16 +129,23 @@ class LanguageManager {
     }
 
     setupEventListeners() {
-        const langBtn = document.getElementById('langBtn');
-        if (langBtn) {
-            langBtn.addEventListener('click', () => this.toggleLanguage());
+        const langES = document.getElementById('langES');
+        const langEN = document.getElementById('langEN');
+
+        if (langES) {
+            langES.addEventListener('click', () => this.switchLanguage('es'));
+        }
+        if (langEN) {
+            langEN.addEventListener('click', () => this.switchLanguage('en'));
         }
     }
 
-    toggleLanguage() {
-        this.currentLang = this.currentLang === 'es' ? 'en' : 'es';
-        this.updateLanguage(this.currentLang);
-        localStorage.setItem('language', this.currentLang);
+    switchLanguage(lang) {
+        if (this.currentLang !== lang) {
+            this.currentLang = lang;
+            this.updateLanguage(lang);
+            localStorage.setItem('language', lang);
+        }
     }
 
     updateLanguage(lang) {
@@ -150,11 +157,16 @@ class LanguageManager {
             }
         });
 
-        // Update language button
-        const currentLangBtn = document.getElementById('currentLang');
-        if (currentLangBtn) {
-            currentLangBtn.textContent = lang.toUpperCase();
-        }
+        // Update active flag
+        const langFlags = document.querySelectorAll('.lang-flag');
+        langFlags.forEach(flag => {
+            const flagLang = flag.getAttribute('data-lang');
+            if (flagLang === lang) {
+                flag.classList.add('active');
+            } else {
+                flag.classList.remove('active');
+            }
+        });
 
         // Update HTML lang attribute
         document.documentElement.lang = lang;
