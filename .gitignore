@@ -19,3 +19,7 @@ npm-debug.log*
 # Temporary files
 *.tmp
 .cache/
+
+# Re-include images for this website
+!images/
+!images/**
